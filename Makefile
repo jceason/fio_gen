@@ -4,9 +4,12 @@ LIB=-lpthread
 OPT=
 
 default: bin/fio_gen 
-	
-bin/fio_gen: src/fio_gen.cpp
-	${CPP} -DLINUX ${OPT} ${LIB} src/fio_gen.cpp -o bin/fio_gen  
+
+bin: 
+	mkdir bin	
+
+bin/fio_gen: src/fio_gen.cpp bin
+	${CPP} -DLINUX ${OPT} src/fio_gen.cpp -o bin/fio_gen ${LIB} 
 
 clean:
 	-rm -f bin/*	
